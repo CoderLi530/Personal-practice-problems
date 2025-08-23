@@ -39,5 +39,6 @@ public:
 
 
         //迭代
+        stack<TreeNode*> st;
     }
 };
