@@ -132,7 +132,7 @@ public:
     bool exist(vector<vector<char>>& board, string word) 
     {
         //回溯
-        //时间复杂度O(M*N*3^L) 空间复杂度O(MN)
+        //时间复杂度O(M*N*3^L) L为字符串的长度 空间复杂度O(MN)
         int m = board.size(), n = board[0].size(); //
         const char* str = word.c_str();
         vector<vector<bool>> vis(m, vector(n, false));
@@ -140,8 +140,10 @@ public:
         {
             for (int j = 0; j < n; ++j)
             {
+                //从字符串开始位置进行回溯
                 if (board[i][j] == str[0])
                 {
+                    //标记位置已访问，防止重复
                     vis[i][j] = true;
                     backtrack(board, str, vis, i, j, strlen(str), 1);
                     vis[i][j] = false;
